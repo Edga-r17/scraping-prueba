@@ -1,0 +1,5 @@
+Django
+beautifulsoup4
+requests
+django-admin-rangefilter
+psycopg2

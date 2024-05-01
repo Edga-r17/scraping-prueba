@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Noticias</h2>
+  <form method="get" action="">
+    <input type="text" name="q" placeholder="Buscar noticias..." value="{{ request.GET.q }}">
+    <button type="submit">Buscar</button>
+  </form>
+  <ul>
+    {% for noticia in noticias %}
+      <li>
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.descripcion }}</p>
+        <p><strong>Autor:</strong> {{ noticia.autor }}</p>
+        <p><strong>Fecha de publicación:</strong> {{ noticia.fecha_publicacion|date:"d M Y" }}</p>
+        <a href="{% url 'eliminar_noticia' noticia.id %}">Eliminar Noticia</a>
+      </li>
+    {% empty %}
+      <li>No se encontraron noticias.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
